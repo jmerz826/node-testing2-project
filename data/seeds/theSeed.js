@@ -1,16 +1,15 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
- */
+
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('bands').truncate()
     .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+      return knex('bands').insert([
+        {band_name: 'Led Zeppelin', genre: 'Rock', number_of_albums: 8},
+        {band_name: 'Black Sabbath', number_of_albums: 19},
+        { band_name: 'Tool', genre: 'Progressive Metal', number_of_albums: 6, good_band: true },
+        {band_name: 'Foo Fighters', good_band: false},
+        {band_name: 'Red Hot Chili Peppers', genre: 'Alternative'},
+        {band_name: 'Devin Townsend Project', number_of_albums: 8},
+        {band_name: 'Fleetwood Mac', good_band: false},
+      ])
+    })
+}
