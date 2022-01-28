@@ -16,3 +16,11 @@ afterAll(async () => {
 test('sanity check', () => {
     expect(1).toBe(1)
 })
+
+describe('GET /api/bands', () => {
+    it('returns 200 status and all bands', async () => {
+        const res = await request(server).get('/api/bands')
+        expect(res.status).toBe(200)
+        expect(res.body).toHaveLength(7)
+    })
+})
